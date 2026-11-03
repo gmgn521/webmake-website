@@ -1,0 +1,885 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080812">
+<meta name="description" content="NEXORA STUDIO - Web3 Creative & Development Studio. We build digital identities and websites for Meme Coins, Crypto and Web3 ecosystems.">
+<title>NEXORA STUDIO — Web3 Creative Studio</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  --bg:#080812;
+  --panel:#10101d;
+  --purple:#9b72ff;
+  --blue:#5e8cff;
+  --green:#b8ff65;
+  --text:#f5f3ff;
+  --muted:#9998ae;
+  --border:rgba(255,255,255,.10);
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html { scroll-behavior:smooth; }
+
+body {
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Space Grotesk',sans-serif;
+  overflow-x:hidden;
+}
+
+a { text-decoration:none;color:inherit; }
+button { font:inherit; }
+
+.container {
+  width:min(1160px,90%);
+  margin:auto;
+}
+
+.noise {
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:10;
+  opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+.glow {
+  position:absolute;
+  width:500px;
+  height:500px;
+  border-radius:50%;
+  filter:blur(150px);
+  pointer-events:none;
+  opacity:.2;
+}
+
+.glow-purple {
+  background:#733cff;
+  top:50px;
+  right:-180px;
+}
+
+.glow-blue {
+  background:#285aff;
+  bottom:-100px;
+  left:-200px;
+}
+
+header {
+  height:82px;
+  border-bottom:1px solid var(--border);
+  position:relative;
+  z-index:20;
+}
+
+nav {
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo {
+  font-size:23px;
+  font-weight:700;
+  letter-spacing:2px;
+}
+
+.logo span { color:var(--purple); }
+
+.nav-links {
+  display:flex;
+  gap:32px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.nav-links a:hover { color:white; }
+
+.nav-cta {
+  border:1px solid rgba(155,114,255,.5);
+  padding:10px 19px;
+  border-radius:5px;
+  font-size:12px;
+  color:#c6b5ff;
+  transition:.3s;
+}
+
+.nav-cta:hover {
+  background:var(--purple);
+  color:white;
+}
+
+.hero {
+  min-height:710px;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-grid {
+  position:absolute;
+  inset:0;
+  opacity:.15;
+  background-image:
+    linear-gradient(rgba(155,114,255,.16) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(155,114,255,.16) 1px,transparent 1px);
+  background-size:65px 65px;
+  mask-image:linear-gradient(to bottom,black,transparent);
+}
+
+.hero-content {
+  position:relative;
+  z-index:2;
+  max-width:800px;
+  padding:90px 0;
+}
+
+.eyebrow {
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-family:'Space Mono',monospace;
+  font-size:11px;
+  color:#b7a0ff;
+  letter-spacing:2px;
+  margin-bottom:30px;
+}
+
+.dot {
+  width:7px;
+  height:7px;
+  background:var(--green);
+  border-radius:50%;
+  box-shadow:0 0 12px var(--green);
+}
+
+.hero h1 {
+  font-size:clamp(52px,8vw,100px);
+  line-height:1.04;
+  letter-spacing:-5px;
+  font-weight:700;
+}
+
+.gradient-text {
+  background:linear-gradient(100deg,#a98aff,#6e9bff,#d6a7ff);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero-desc {
+  max-width:570px;
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.9;
+  margin:30px 0 35px;
+}
+
+.actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:15px;
+}
+
+.btn-primary {
+  background:linear-gradient(100deg,#8058e9,#6388ff);
+  padding:15px 25px;
+  border-radius:5px;
+  font-size:13px;
+  font-weight:600;
+  transition:.3s;
+}
+
+.btn-primary:hover {
+  transform:translateY(-3px);
+  box-shadow:0 10px 35px #7958ee55;
+}
+
+.btn-outline {
+  border:1px solid var(--border);
+  padding:15px 25px;
+  border-radius:5px;
+  font-size:13px;
+  transition:.3s;
+}
+
+.btn-outline:hover { border-color:var(--purple); }
+
+.hero-bottom {
+  margin-top:75px;
+  display:flex;
+  gap:50px;
+  flex-wrap:wrap;
+}
+
+.hero-stat small {
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  letter-spacing:2px;
+  font-family:'Space Mono',monospace;
+}
+
+.hero-stat strong {
+  display:block;
+  margin-top:8px;
+  font-size:14px;
+}
+
+.section {
+  padding:115px 0;
+  position:relative;
+}
+
+.section-label {
+  font-family:'Space Mono',monospace;
+  color:var(--purple);
+  font-size:11px;
+  letter-spacing:3px;
+  margin-bottom:18px;
+}
+
+.section-title {
+  font-size:clamp(34px,5vw,53px);
+  letter-spacing:-2px;
+  line-height:1.2;
+}
+
+.section-desc {
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.8;
+  margin-top:18px;
+  max-width:580px;
+}
+
+.services-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:55px;
+}
+
+.service-card {
+  min-height:245px;
+  padding:30px;
+  background:linear-gradient(145deg,#151426,#0d0d19);
+  border:1px solid var(--border);
+  border-radius:10px;
+  transition:.3s;
+}
+
+.service-card:hover {
+  transform:translateY(-6px);
+  border-color:#9473ff88;
+}
+
+.service-icon {
+  font-size:27px;
+  margin-bottom:30px;
+}
+
+.service-card .number {
+  font-family:'Space Mono',monospace;
+  font-size:10px;
+  color:var(--purple);
+  margin-bottom:12px;
+}
+
+.service-card h3 {
+  font-size:21px;
+  margin-bottom:12px;
+}
+
+.service-card p {
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.8;
+}
+
+.work-section {
+  background:#0c0c18;
+}
+
+.work-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  margin-top:50px;
+}
+
+.work-card {
+  min-height:290px;
+  border-radius:12px;
+  padding:35px;
+  border:1px solid var(--border);
+  overflow:hidden;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  background:
+    radial-gradient(circle at 80% 20%,#8452ff66,transparent 40%),
+    linear-gradient(135deg,#19142f,#0c1021);
+}
+
+.work-card:nth-child(2) {
+  background:
+    radial-gradient(circle at 80% 20%,#477dff66,transparent 40%),
+    linear-gradient(135deg,#101c35,#101020);
+}
+
+.work-card:nth-child(3) {
+  background:
+    radial-gradient(circle at 80% 20%,#a5ff6540,transparent 40%),
+    linear-gradient(135deg,#182319,#101020);
+}
+
+.work-card:nth-child(4) {
+  background:
+    radial-gradient(circle at 80% 20%,#d35aff55,transparent 40%),
+    linear-gradient(135deg,#26142f,#101020);
+}
+
+.work-tag {
+  font-family:'Space Mono',monospace;
+  font-size:10px;
+  color:#c6b3ff;
+  margin-bottom:13px;
+}
+
+.work-card h3 {
+  font-size:28px;
+  margin-bottom:9px;
+}
+
+.work-card p {
+  font-size:13px;
+  color:#b1afc4;
+  max-width:340px;
+  line-height:1.7;
+}
+
+.work-card::after {
+  content:attr(data-symbol);
+  position:absolute;
+  top:25px;
+  right:35px;
+  font-size:90px;
+  font-weight:700;
+  opacity:.12;
+}
+
+.process-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+  margin-top:55px;
+}
+
+.process-card {
+  border-top:1px solid #8e70e9;
+  padding-top:23px;
+}
+
+.process-card span {
+  color:var(--purple);
+  font-family:'Space Mono',monospace;
+  font-size:12px;
+}
+
+.process-card h3 {
+  font-size:18px;
+  margin:20px 0 12px;
+}
+
+.process-card p {
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.8;
+}
+
+.about {
+  background:#0c0c18;
+}
+
+.about-layout {
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:70px;
+  align-items:center;
+}
+
+.about-box {
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:35px;
+  background:linear-gradient(145deg,#17152c,#0c1020);
+}
+
+.about-box .big-text {
+  font-size:54px;
+  font-weight:700;
+  color:#9b79ff;
+  letter-spacing:-3px;
+}
+
+.about-box p {
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.9;
+  margin-top:15px;
+}
+
+.faq-list {
+  margin-top:45px;
+  border-top:1px solid var(--border);
+}
+
+details {
+  border-bottom:1px solid var(--border);
+  padding:24px 0;
+}
+
+summary {
+  cursor:pointer;
+  list-style:none;
+  font-size:16px;
+  font-weight:600;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+}
+
+summary::after {
+  content:"+";
+  color:var(--purple);
+  font-size:22px;
+}
+
+details[open] summary::after { content:"−"; }
+
+details p {
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.8;
+  margin-top:17px;
+}
+
+.contact {
+  text-align:center;
+  padding:125px 0;
+  background:
+    radial-gradient(ellipse at center,#4f35a833,transparent 65%);
+}
+
+.contact h2 {
+  font-size:clamp(38px,6vw,66px);
+  letter-spacing:-3px;
+  margin:20px 0;
+}
+
+.contact p {
+  color:var(--muted);
+  font-size:15px;
+  margin-bottom:35px;
+}
+
+.contact-buttons {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:15px;
+}
+
+footer {
+  border-top:1px solid var(--border);
+  padding:35px 0;
+}
+
+.footer-inner {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.footer-text {
+  color:var(--muted);
+  font-size:12px;
+}
+
+.footer-links {
+  display:flex;
+  gap:20px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+@media(max-width:800px) {
+  .nav-links { display:none; }
+
+  .hero { min-height:650px; }
+
+  .hero h1 { letter-spacing:-3px; }
+
+  .services-grid { grid-template-columns:1fr 1fr; }
+
+  .process-grid { grid-template-columns:1fr 1fr; }
+
+  .about-layout { grid-template-columns:1fr;gap:35px; }
+
+  .work-card { min-height:260px; }
+}
+
+@media(max-width:550px) {
+  header { height:70px; }
+
+  .logo { font-size:19px; }
+
+  .nav-cta { padding:9px 12px;font-size:10px; }
+
+  .hero { min-height:620px; }
+
+  .hero h1 { font-size:52px; }
+
+  .hero-desc { font-size:14px; }
+
+  .hero-bottom { gap:28px;margin-top:55px; }
+
+  .section { padding:80px 0; }
+
+  .services-grid,
+  .work-grid,
+  .process-grid { grid-template-columns:1fr; }
+
+  .service-card { min-height:210px; }
+
+  .work-card { min-height:240px; }
+
+  .about-box .big-text { font-size:43px; }
+
+  .contact { padding:90px 0; }
+
+  .footer-inner { flex-direction:column;text-align:center; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="noise"></div>
+
+<header>
+  <nav class="container">
+    <a class="logo" href="#home">NEXORA<span>.</span></a>
+
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+    </div>
+
+    <a class="nav-cta" href="#contact">LET'S TALK ↗</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="glow glow-purple"></div>
+  <div class="glow glow-blue"></div>
+  <div class="hero-grid"></div>
+
+  <div class="container hero-content">
+    <div class="eyebrow">
+      <span class="dot"></span>
+      WEB3 CREATIVE & DEVELOPMENT STUDIO
+    </div>
+
+    <h1>
+      BUILD YOUR<br>
+      <span class="gradient-text">WEB3 IDENTITY.</span>
+    </h1>
+
+    <p class="hero-desc">
+      We craft bold digital experiences for the decentralized world.
+      From Meme Coins to Web3 ecosystems, we turn ambitious ideas
+      into powerful digital identities.
+    </p>
+
+    <div class="actions">
+      <a class="btn-primary" href="#contact">START YOUR PROJECT ↗</a>
+      <a class="btn-outline" href="#services">EXPLORE SERVICES ↓</a>
+    </div>
+
+    <div class="hero-bottom">
+      <div class="hero-stat">
+        <small>OUR FOCUS</small>
+        <strong>WEB3 & CRYPTO</strong>
+      </div>
+      <div class="hero-stat">
+        <small>OUR EXPERTISE</small>
+        <strong>DESIGN + DEVELOPMENT</strong>
+      </div>
+      <div class="hero-stat">
+        <small>OUR MISSION</small>
+        <strong>IDEAS INTO REALITY</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section container" id="services">
+  <div class="section-label">01 / WHAT WE DO</div>
+  <h2 class="section-title">
+    DIGITAL SOLUTIONS<br>
+    FOR THE WEB3 WORLD.
+  </h2>
+  <p class="section-desc">
+    We help Web3 founders and communities build their online presence
+    with thoughtful design, clear messaging and modern technology.
+  </p>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">◈</div>
+      <div class="number">01 / WEB DESIGN</div>
+      <h3>Web3 Websites</h3>
+      <p>Premium project websites, landing pages and digital brand experiences.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">✳</div>
+      <div class="number">02 / MEME COINS</div>
+      <h3>Meme Coin Websites</h3>
+      <p>Distinctive token identity pages, token information and community entry points.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">⌘</div>
+      <div class="number">03 / ECOSYSTEM</div>
+      <h3>Ecosystem Websites</h3>
+      <p>Showcase your products, protocols, partnerships and decentralized ecosystem.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">⬡</div>
+      <div class="number">04 / DEFI</div>
+      <h3>DeFi & Protocol</h3>
+      <p>Present your protocol, features, product architecture and documentation links.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">✧</div>
+      <div class="number">05 / NFT & DAO</div>
+      <h3>NFT & DAO</h3>
+      <p>Creative websites for NFT collections, communities and decentralized governance.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">✦</div>
+      <div class="number">06 / BRANDING</div>
+      <h3>Visual Identity</h3>
+      <p>Logo direction, visual assets and cohesive brand presentation for Web3 projects.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section work-section" id="solutions">
+  <div class="container">
+    <div class="section-label">02 / SOLUTIONS</div>
+    <h2 class="section-title">BUILT FOR YOUR<br>VISION.</h2>
+    <p class="section-desc">
+      Different projects need different digital experiences.
+      We create websites around your project's identity and goals.
+    </p>
+
+    <div class="work-grid">
+      <div class="work-card" data-symbol="MEME">
+        <div class="work-tag">01 / MEME COIN</div>
+        <h3>Meme Culture.</h3>
+        <p>Bold visual identity, token information, community links and launch pages.</p>
+      </div>
+
+      <div class="work-card" data-symbol="WEB3">
+        <div class="work-tag">02 / WEB3 ECOSYSTEM</div>
+        <h3>Build Your Ecosystem.</h3>
+        <p>Showcase your products, partners, infrastructure and entire Web3 vision.</p>
+      </div>
+
+      <div class="work-card" data-symbol="DEFI">
+        <div class="work-tag">03 / DEFI PROTOCOL</div>
+        <h3>Make Complexity Clear.</h3>
+        <p>Present protocol architecture, product features and documentation.</p>
+      </div>
+
+      <div class="work-card" data-symbol="DAO">
+        <div class="work-tag">04 / NFT & DAO</div>
+        <h3>Community First.</h3>
+        <p>Create a digital home for your community, collection and governance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section container" id="process">
+  <div class="section-label">03 / HOW WE WORK</div>
+  <h2 class="section-title">FROM IDEA TO LAUNCH.</h2>
+  <p class="section-desc">
+    A clear and efficient process to turn your project vision into a live website.
+  </p>
+
+  <div class="process-grid">
+    <div class="process-card">
+      <span>STEP 01</span>
+      <h3>Discovery</h3>
+      <p>Understand your project, target audience, brand and website requirements.</p>
+    </div>
+
+    <div class="process-card">
+      <span>STEP 02</span>
+      <h3>Design</h3>
+      <p>Build the visual direction, layout and complete page experience.</p>
+    </div>
+
+    <div class="process-card">
+      <span>STEP 03</span>
+      <h3>Development</h3>
+      <p>Turn approved designs into responsive and functional website pages.</p>
+    </div>
+
+    <div class="process-card">
+      <span>STEP 04</span>
+      <h3>Launch</h3>
+      <p>Deploy the website, connect your domain and prepare for launch.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section about" id="about">
+  <div class="container about-layout">
+    <div>
+      <div class="section-label">04 / ABOUT NEXORA</div>
+      <h2 class="section-title">
+        THE NEXT ERA<br>
+        IS DECENTRALIZED.
+      </h2>
+      <p class="section-desc">
+        NEXORA STUDIO is an independent creative studio focused on
+        the Web3 space. We combine modern visual design with AI-assisted
+        development to help ambitious projects establish their digital presence.
+      </p>
+    </div>
+
+    <div class="about-box">
+      <div class="big-text">WEB3<br>× DESIGN<br>× TECH.</div>
+      <p>
+        Your project deserves more than a generic template.
+        Let's create a digital experience that reflects your vision.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section container" id="faq">
+  <div class="section-label">05 / FAQ</div>
+  <h2 class="section-title">GOT QUESTIONS?</h2>
+
+  <div class="faq-list">
+    <details>
+      <summary>What types of Web3 projects do you work with?</summary>
+      <p>We work with Meme Coins, DeFi protocols, Web3 ecosystems, NFT collections, DAOs and independent crypto projects.</p>
+    </details>
+
+    <details>
+      <summary>Can you build a website from scratch?</summary>
+      <p>Yes. We can help with visual direction, page structure, responsive development and deployment.</p>
+    </details>
+
+    <details>
+      <summary>Can you help connect a custom domain?</summary>
+      <p>Yes. We can assist with domain configuration, DNS records and HTTPS setup. Domain registration costs are separate.</p>
+    </details>
+
+    <details>
+      <summary>How long does a website take?</summary>
+      <p>It depends on the page count, content and functionality. We will provide an estimated timeline after understanding your requirements.</p>
+    </details>
+
+    <details>
+      <summary>How do I start a project?</summary>
+      <p>Send us your project introduction, preferred style and website requirements through Telegram or email. We will discuss the next steps.</p>
+    </details>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-label">06 / LET'S CONNECT</div>
+    <h2>HAVE A WEB3<br><span class="gradient-text">PROJECT IN MIND?</span></h2>
+    <p>Tell us about your vision. Let's build something extraordinary.</p>
+
+    <div class="contact-buttons">
+      <a class="btn-primary" id="telegramLink" href="https://t.me/YOUR_TELEGRAM" target="_blank" rel="noopener noreferrer">
+        CONTACT VIA TELEGRAM ↗
+      </a>
+
+      <a class="btn-outline" id="emailLink" href="mailto:YOUR_EMAIL@example.com">
+        SEND AN EMAIL ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <a class="logo" href="#home">NEXORA<span>.</span></a>
+    <div class="footer-text">© 2026 NEXORA STUDIO. ALL RIGHTS RESERVED.</div>
+    <div class="footer-links">
+      <a id="footerTelegram" href="https://t.me/YOUR_TELEGRAM" target="_blank" rel="noopener noreferrer">Telegram ↗</a>
+      <a href="#home">Back to top ↑</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ========================================
+// CONTACT SETTINGS
+// Replace these with your actual contacts
+// ========================================
+
+const CONTACT = {
+  telegram: "sheji113",
+  email: "gmgn521@proton.me"
+};
+
+const telegramUrl = "https://t.me/" + CONTACT.telegram;
+
+document.getElementById("telegramLink").href = telegramUrl;
+document.getElementById("footerTelegram").href = telegramUrl;
+document.getElementById("emailLink").href =
+  "mailto:" + CONTACT.email +
+  "?subject=" + encodeURIComponent("Web3 Website Project Inquiry");
+
+</script>
+
+</body>
+</html>
