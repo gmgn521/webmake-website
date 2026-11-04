@@ -68,6 +68,32 @@ nav{height:100%;display:flex;align-items:center;justify-content:space-between;ga
 .nav-links a{transition:color .2s}
 .nav-links a:hover{color:white}
 .nav-actions{display:flex;align-items:center;gap:12px}
+
+/* 新增的 X 导航图标样式 */
+.nav-x-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  transition: .25s;
+}
+.nav-x-icon:hover {
+  border-color: var(--purple);
+  background: rgba(167, 139, 250, 0.12);
+  color: var(--purple-bright);
+  transform: translateY(-2px);
+}
+.nav-x-icon svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+}
+
 .lang-toggle{
   border:1px solid rgba(167,139,250,.45);background:rgba(167,139,250,.08);
   color:#e4dcff;padding:9px 13px;border-radius:7px;font-size:12px;font-weight:700;
@@ -209,8 +235,32 @@ details p{color:var(--muted);font-size:14px;line-height:1.8;margin-top:17px}
 footer{border-top:1px solid var(--border);padding:35px 0;background:rgba(6,8,20,.4);position:relative;z-index:2}
 .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .footer-text{color:var(--muted);font-size:12px}
-.footer-links{display:flex;gap:20px;color:var(--muted);font-size:12px}
+.footer-links{display:flex;align-items:center;gap:20px;color:var(--muted);font-size:12px}
 .footer-links a:hover{color:white}
+
+/* Footer 中的 X 图标样式 */
+.footer-x-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--muted);
+  transition: .25s;
+}
+.footer-x-icon:hover {
+  border-color: var(--purple);
+  background: rgba(167, 139, 250, 0.12);
+  color: white;
+}
+.footer-x-icon svg {
+  width: 13px;
+  height: 13px;
+  fill: currentColor;
+}
 
 @media(max-width:900px){
   .nav-links{gap:16px}
@@ -272,6 +322,10 @@ footer{border-top:1px solid var(--border);padding:35px 0;background:rgba(6,8,20,
       <a href="#faq" data-i18n="navFaq">常见问题</a>
     </div>
     <div class="nav-actions">
+      <!-- 右上角导航栏新增的 X 图标入口 -->
+      <a class="nav-x-icon" href="https://x.com/webmake88" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
       <button class="lang-toggle" id="languageToggle" type="button" aria-label="切换语言">EN / 中文</button>
       <a class="nav-cta" href="#contact" data-i18n="navCta">联系咨询 ↗</a>
     </div>
@@ -410,6 +464,10 @@ footer{border-top:1px solid var(--border);padding:35px 0;background:rgba(6,8,20,
     <a class="logo" href="#home">WEBMAKE<span>.</span></a>
     <div class="footer-text">© 2026 WEBMAKE STUDIO. <span data-i18n="rights">版权所有。</span></div>
     <div class="footer-links">
+      <!-- Footer 社交媒体区域新增的 X 图标入口 -->
+      <a class="footer-x-icon" href="https://x.com/webmake88" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
       <a id="footerTelegram" href="https://t.me/webmake88" target="_blank" rel="noopener noreferrer">Telegram ↗</a>
       <a href="#home" data-i18n="backTop">返回顶部 ↑</a>
     </div>
@@ -442,7 +500,7 @@ const translations = {
     solutionsLabel:"02 / 解决方案",solutionsTitle:"为不同 WEB3 项目\n定制打造方案。",solutionsDesc:"我们将 Meme 币的病毒式传播力放在首位，结合其他 Web3 产品形态，提供适配的网站表达。",
     work1Title:"Meme 文化与病毒传播。",work1Desc:"极具冲击力的视觉、一键复制 CA、Pump.fun/Raydium 直达链接与社群引导。",work2Title:"构建完整项目生态。",work2Desc:"展示产品矩阵、合作伙伴、基础设施与全套去中心化蓝图。",work3Title:"DeFi 协议与产品展示。",work3Desc:"清晰呈现金融协议逻辑、产品功能与白皮书/文档入口。",work4Title:"NFT 艺术与 DAO 社区。",work4Desc:"为数字藏品系列与去中心化社区治理打造兼具艺术感的线上空间。",
     processLabel:"03 / 合作流程",processTitle:"高效流程，快速上线。",processDesc:"专为快节奏 Web3 与 Meme 项目定制的无缝合作流程，让你的代码与设计迅速转化落地。",
-    step1Title:"需求与素材沟通",step1Desc:"确定代币名称、Meme 形象梗元素、社群链接、CA 与上线安排。",step2Title:"视觉与 UI 设计",step2Desc:"快速输出极具视觉冲击力的页面方案与交互展示风格。",step3Title:"响应式开发",step3Desc:"完美适配 PC 与手机移动端，确保极致加载速度与流畅体验。",step4Title:"全球部署上线",step4Desc:"完成 CDN 节点部署、绑定自定义域名，即刻全网发布。",
+    step1Title:"需求与素材沟通",step1Desc:"确定代币名称、Meme 梗元素、社群链接、CA 与上线安排。",step2Title:"视觉与 UI 设计",step2Desc:"快速输出极具视觉冲击力的页面方案与交互展示风格。",step3Title:"响应式开发",step3Desc:"完美适配 PC 与手机移动端，确保极致加载速度与流畅体验。",step4Title:"全球部署上线",step4Desc:"完成 CDN 节点部署、绑定自定义域名，即刻全网发布。",
     aboutLabel:"04 / 关于 WEBMAKE",aboutTitle:"Meme 驱动视觉，\n代码构建信任。",aboutDesc:"WEBMAKE STUDIO 是一家聚焦 Web3 与 Meme 文化的前沿数字制作工作室。我们深刻理解 Meme Coin 的传播逻辑，结合高品质 UI 设计与现代前端技术，帮助每一个项目在加密浪潮中脱颖而出。",aboutBoxDesc:"好的 Meme 项目需要一个能让人过目不忘的官网。我们拒绝同质化套板，为你量身打造具有爆发力的专属数字阵地。",
     faqLabel:"05 / 常见问题",faqTitle:"解答你的疑虑。",faqQ1:"制作一个 Meme Coin 官网需要多久？",faqA1:"针对急需上线发行的 Meme 项目，最快可在 10 分钟内完成设计并发布上线，后续根据需求再灵活进行改动。",faqQ2:"网站支持一键复制合约地址（CA）和跳转购买吗？",faqA2:"支持。我们会原生内置一键复制 CA、DexScreener/Raydium/Pump.fun/Uniswap 等交易平台的快速跳转链接。",faqQ3:"除了 Meme 币，你们还承接其他 Web3 项目吗？",faqA3:"是的。除了核心的 Meme 币服务外，我们同样承接 DeFi 协议、NFT 项目、DAO 社区及 Web3 综合生态官网。",faqQ4:"可以协助配置域名与服务器吗？",faqA4:"可以。我们可以全权协助完成域名解析配置、云服务器/Vercel/Cloudflare 部署及 SSL 证书配置。",faqQ5:"如何开始沟通我们的项目？",faqA5:"通过 Telegram 或电子邮件随时联系我们，发送你的文案、素材或初步构想，我们会在第一时间响应。",
     contactLabel:"06 / 联系我们",contactTitle:"准备好打造你的\n爆款 MEME 官网？",contactDesc:"告诉我们你的代币构想，极速开启项目上线之旅。",contactTelegram:"通过 TELEGRAM 联系 ↗",contactEmail:"发送邮件 ↗",rights:"版权所有。",backTop:"返回顶部 ↑"
